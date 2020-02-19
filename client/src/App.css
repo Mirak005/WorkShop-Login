@@ -1,0 +1,27 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.login-form{
+    border: 0.5px solid #26262626;
+    display: flex ; 
+    flex-direction: column;
+    margin: auto;
+    width: 30%;
+    padding: 2rem;
+}
+.login-form > input{
+margin: 0 0 1rem ;
+padding: 0.5rem;
+}
+.login-form > button{
+    margin: auto;
+    background-color: none;
+    border-radius: 3px;
+    padding: 5px;
+    border:0.5 solid blueviolet ;
+    }

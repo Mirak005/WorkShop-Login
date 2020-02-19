@@ -1,0 +1,4 @@
+{
+    "mongouri" : "mongodb://localhost:27017/workshop-anis-Users",
+    "jwtSecret":"MyMsecretMirak"
+}
