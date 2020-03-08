@@ -14,7 +14,9 @@ const registerController = {
       //check if user already exists
       const serachResult = await User.findOne({ email });
       if (serachResult)
-        return res.status(500).json({ msgs: "User already exists" });
+        return res
+          .status(500)
+          .json({ errors: [{ msg: "User already exists" }] });
       // create new user
       const newUser = new User({ login, password, email });
 
@@ -31,7 +33,11 @@ const registerController = {
                 newUser.save();
                 res.json(newUser);
               } catch (error) {
-                res.status(500).json({ msg: "Server Error , Register Failed" });
+                res
+                  .status(500)
+                  .json({
+                    errors: [{ msg: "Server Error , Register Failed" }]
+                  });
               }
             });
       });
@@ -47,10 +53,13 @@ const registerController = {
     try {
       const searchUser = await User.findOne({ email });
       if (!searchUser)
-        return res.status(400).json({ msgs: "User dosent exist" });
+        return res.status(400).json({ errors: [{ msg: "User dosent exist" }] });
 
       const isMatch = await bcrypt.compare(password, searchUser.password);
-      if (!isMatch) return res.status(400).json({ msgs: "Bad Credentials " });
+      if (!isMatch)
+        return res
+          .status(400)
+          .json([{ errors: [{ msg: "Bad Credentials " }] }]);
 
       const payload = {
         id: searchUser._id,
